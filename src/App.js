@@ -16,6 +16,7 @@ class App extends Component {
   displayTasks = () => {
     API.getAllTasks()
       .then(result => {
+        //isEdit isDone
         const taskTitles = result.data.map(x => x);
         this.setState({ tasks: taskTitles });
       })
@@ -39,6 +40,16 @@ class App extends Component {
       });
   };
 
+  handleDelete = id => {
+    API.deleteTask(id)
+      .then(result => {
+        this.displayTasks();
+        console.log(result);
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
+  };
   render() {
     return (
       <div className="App">
@@ -48,9 +59,15 @@ class App extends Component {
         <button onClick={this.handleAdd}>Add Task</button>
         {/* TODO: Display Todos */}
         {this.state.tasks.map(x => (
-          <h1 key={x.id}> {x.title} </h1> //Unique key but console showing warning for non-unique key?
+          <div className="task">
+            <h1 key={x._id}> {x.title} </h1>{" "}
+            {/* Getting a warning for non-unqiue keys despite providing unique key?*/}
+            {/* TOOD: Delete Button */}
+            <button onClick={() => this.handleDelete(x._id)}>
+              Delete Task
+            </button>
+          </div>
         ))}
-        {/* TOOD: Delete Button */}
         {/* TODO: Edit Button */}
       </div>
     );

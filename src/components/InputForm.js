@@ -6,7 +6,12 @@ export default function InputForm(props) {
   };
   return (
     <div>
-      <input type="text" onChange={handleChange} />
+      <input
+        type="text"
+        onChange={handleChange}
+        placeholder='"Shopping "'
+        className="text-input"
+      />
     </div>
   );
 }
