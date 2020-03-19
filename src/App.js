@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import InputForm from "./components/InputForm";
 
 class App extends Component {
+  state = {
+    formString: ""
+  };
+  handleFormChange = newStringVal => {
+    this.setState({ formString: newStringVal });
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {/* TODO: Input Form  */}
+        <InputForm handleChange={this.handleFormChange} />
+        {/* TODO: Display Todos */}
+        {/* TOOD: Add Button */}
+        {/* TOOD: Delete Button */}
+        {/* TODO: Edit Button */}
       </div>
     );
   }
