@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class API {
+class APIservices {
   constructor() {
     this.api = axios.create({
       baseURL: "http://localhost:4000/api/v1"
@@ -20,7 +20,7 @@ class API {
     return this.api.post("/todos", { title });
   };
 
-  updateTask = id => {
+  updateTask = (id, title) => {
     return this.api.put(`/todos/${id}`, { title });
   };
 
@@ -29,6 +29,6 @@ class API {
   };
 }
 
-const API = new API();
+const API = new APIservices();
 
 export default API;
